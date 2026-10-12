@@ -1,6 +1,7 @@
 (function () {
   var App = (window.App = window.App || {});
   var KEY = "theme";
+  var WALK_MS = 520;
   function apply(t) {
     document.documentElement.setAttribute("data-theme", t);
     var m = document.querySelector('meta[name="theme-color"]');
@@ -12,10 +13,29 @@
       try { saved = localStorage.getItem(KEY); } catch (e) {}
       var t = saved || (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
       apply(t);
-      document.getElementById("themeToggle").addEventListener("click", function () {
-        t = t === "dark" ? "light" : "dark";
-        apply(t);
-        try { localStorage.setItem(KEY, t); } catch (e) {}
+
+      var btn = document.getElementById("themeToggle");
+      var busy = false;
+      var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+      function save() { try { localStorage.setItem(KEY, t); } catch (e) {} }
+
+      btn.addEventListener("click", function () {
+        if (busy) return;
+        var next = t === "dark" ? "light" : "dark";
+        if (reduce) { t = next; apply(t); save(); return; }
+
+        busy = true;
+        btn.classList.add("is-switching");
+        setTimeout(function () {
+          t = next;
+          apply(t);
+          save();
+          btn.classList.add("is-flip");
+        }, WALK_MS);
+        setTimeout(function () {
+          btn.classList.remove("is-switching", "is-flip");
+          busy = false;
+        }, 1000);
       });
     }
   };

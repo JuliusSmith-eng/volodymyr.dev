@@ -1,0 +1,47 @@
+/* Перемикач теми в неоморфному стилі: трек, ковпачок зі сонцем/місяцем, отвір і фігурка, що заходить у нього */
+.tswitch{
+  --tw:88px; --th:38px; --knob:30px; --hole-w:16px; --hole-h:8px; --hole-r:11px;
+  --wk-w:10px; --wk-h:18px; --wk-x:38px; --travel:26px;
+  flex:none;display:block;padding:0;border:0;background:transparent;cursor:pointer;
+  border-radius:999px;-webkit-tap-highlight-color:transparent}
+.tswitch__track{position:relative;display:block;width:var(--tw);height:var(--th);border-radius:999px;overflow:hidden;
+  background:var(--ts-track);box-shadow:var(--ts-track-shadow);
+  transition:background .55s var(--ease),box-shadow .55s var(--ease)}
+.tswitch__knob{position:absolute;top:calc((var(--th) - var(--knob)) / 2);left:calc((var(--th) - var(--knob)) / 2);
+  width:var(--knob);height:var(--knob);border-radius:50%;display:grid;place-items:center;
+  background:var(--ts-knob);box-shadow:var(--ts-knob-shadow);
+  transition:background .55s var(--ease),box-shadow .55s var(--ease),transform .3s var(--ease)}
+.tswitch__knob svg{grid-area:1/1;width:56%;height:56%;color:var(--muted)}
+.tswitch__knob .i-sun{color:var(--accent)}
+.tswitch__hole{position:absolute;top:50%;right:var(--hole-r);width:var(--hole-w);height:var(--hole-h);
+  transform:translateY(-50%);border-radius:50%;background:var(--ts-hole);box-shadow:var(--ts-hole-shadow);
+  transition:background .4s var(--ease),box-shadow .4s var(--ease)}
+.tswitch__walker{position:absolute;top:calc((var(--th) - var(--wk-h)) / 2);left:var(--wk-x);
+  width:var(--wk-w);height:var(--wk-h);color:var(--text);opacity:0;pointer-events:none;transform-origin:50% 100%}
+.tswitch__walker svg{display:block;width:100%;height:100%}
+
+/* фігурка йде до отвору і падає в нього; тема міняється в момент падіння */
+@keyframes tswitch-walk{
+  0%{opacity:0;transform:translate(0,0) rotate(0)}
+  10%{opacity:1;transform:translate(calc(var(--travel) * .08),0) rotate(0)}
+  30%{transform:translate(calc(var(--travel) * .3),-1.5px) rotate(9deg)}
+  50%{transform:translate(calc(var(--travel) * .52),0) rotate(-9deg)}
+  70%{transform:translate(calc(var(--travel) * .74),-1.5px) rotate(9deg)}
+  86%{opacity:1;transform:translate(var(--travel),0) rotate(0)}
+  100%{opacity:0;transform:translate(calc(var(--travel) * 1.04),8px) scale(.25)}
+}
+@keyframes tswitch-pop{
+  0%{transform:scale(1)}35%{transform:scale(.88)}70%{transform:scale(1.07)}100%{transform:scale(1)}
+}
+.tswitch.is-switching .tswitch__walker{animation:tswitch-walk .6s ease-in forwards}
+.tswitch.is-switching .tswitch__hole{background:var(--ts-hole-deep);box-shadow:var(--ts-hole-deep-shadow)}
+.tswitch.is-flip .tswitch__knob{animation:tswitch-pop .45s var(--ease)}
+@media (hover:hover){.tswitch:hover .tswitch__knob{transform:translateY(-2px)}}
+@media (max-width:880px){
+  .tswitch{--tw:68px;--th:32px;--knob:24px;--hole-w:12px;--hole-h:6px;--hole-r:9px;
+    --wk-w:8.5px;--wk-h:15px;--wk-x:31px;--travel:18px}
+}
+@media (prefers-reduced-motion:reduce){
+  .tswitch__track,.tswitch__knob,.tswitch__hole{transition:none!important}
+  .tswitch.is-switching .tswitch__walker,.tswitch.is-flip .tswitch__knob{animation:none!important}
+}
