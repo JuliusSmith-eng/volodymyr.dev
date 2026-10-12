@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="uk" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Volodymyr.dev — фронтенд-розробник: лендінги, дашборди, верстка на HTML/CSS/JS</title>
+  <meta name="description" content="Володимир — фронтенд-розробник. Адаптивні лендінги, дашборди з API та верстка за макетом на чистому HTML, CSS і JavaScript. Строки від 2 днів, вихідні коди в комплекті.">
+  <meta name="author" content="Володимир">
+  <meta name="theme-color" content="#0A1824">
+  <link rel="canonical" href="https://USERNAME.github.io/portfolio/">
+  <link rel="icon" href="assets/img/favicon.png" sizes="180x180" type="image/png">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:title" content="Volodymyr.dev — фронтенд-розробник">
+  <meta property="og:description" content="Лендінги, дашборди та верстка на чистому HTML, CSS і JavaScript.">
+  <meta property="og:url" content="https://USERNAME.github.io/portfolio/">
+  <meta property="og:image" content="https://USERNAME.github.io/portfolio/assets/img/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Oswald:wght@400;500;700&family=Tektur:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/wolf/poster.webp" type="image/webp">
+  <link rel="stylesheet" href="css/main.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Person","name":"Володимир","jobTitle":"Фронтенд-розробник","url":"https://USERNAME.github.io/portfolio/","sameAs":["https://t.me/USERNAME","https://instagram.com/USERNAME","https://www.fiverr.com/USERNAME"],"knowsAbout":["HTML","CSS","JavaScript","Tailwind CSS","Chart.js","PHP"]}
+  </script>
+</head>
+<body>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+  <a class="skip" href="#main">До вмісту</a>
+
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a class="logo" href="#hero" aria-label="Volodymyr.dev, на головну"><img class="logo__mark" src="assets/img/logo.webp" width="400" height="193" alt="" decoding="async">Volodymyr<span>.dev</span></a>
+      <nav class="nav" id="nav" aria-label="Основне меню">
+        <a href="#stack">Стек</a>
+        <a href="#works">Роботи</a>
+        <a href="#pricing">Ціни</a>
+        <a href="#contacts">Контакти</a>
+      </nav>
+      <button class="icon-btn" id="themeToggle" type="button" aria-label="Перемкнути тему">
+        <svg class="i-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="i-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <button class="icon-btn burger" id="burger" type="button" aria-label="Відкрити меню" aria-expanded="false" aria-controls="nav"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="hero">
+      <div class="hero__glow" aria-hidden="true"></div>
+      <div class="container hero__grid">
+        <div class="hero__stage" id="stage">
+          <p class="hello" id="hello" aria-label="Привіт, я Володимир"><span class="hello__col hello__col--l"><span>Привіт, я</span></span><span class="hello__col hello__col--r"><span>Володимир</span></span></p>
+          <div class="wolf" id="wolfBox" role="img" aria-label="Вовк у жовтій худі озирається по сторонах">
+            <video class="wolf__video" id="wolfVideo" src="assets/wolf/wolf.mp4" muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1"></video>
+            <img class="wolf__poster" id="wolfPoster" src="assets/wolf/poster.webp" alt="" aria-hidden="true">
+            <canvas class="wolf__canvas" id="wolf" aria-hidden="true"></canvas>
+          </div>
+          <div class="hero__float hero__float--cta">
+            <a class="btn btn--primary hero__cta" href="#contacts">Обговоримо проєкт?</a>
+          </div>
+          <div class="hero__socials">
+            <span class="bub bub--1">
+              <a href="https://t.me/USERNAME" target="_blank" rel="noopener" aria-label="Telegram">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M21.9 4.3 2.9 11.6c-1 .4-1 1.8 0 2.2l4.7 1.6 1.8 5.5c.3.9 1.4 1.1 2 .4l2.5-2.6 4.7 3.4c.7.5 1.7.1 1.9-.7l3.3-15.6c.2-1-.8-1.8-1.9-1.5z"/></svg>
+              </a>
+            </span>
+            <span class="bub bub--2">
+              <a href="https://instagram.com/USERNAME" target="_blank" rel="noopener" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.3" cy="6.7" r="1.15" fill="currentColor" stroke="none"/></svg>
+              </a>
+            </span>
+            <span class="bub bub--3">
+              <a href="https://www.fiverr.com/USERNAME" target="_blank" rel="noopener" aria-label="Fiverr">
+                <span class="bub__f" aria-hidden="true">f<i>.</i></span>
+              </a>
+            </span>
+          </div>
+        </div>
+        <div class="hero__text">
+          <h1 class="hero__title"><span>Чистий код.</span> <span>Живий інтерфейс.</span> <span>Сайт, що приводить клієнтів.</span></h1>
+          <p class="hero__badge">⚡ Строк виконання — від 2 днів</p>
+          <p class="hero__lead">Я Володимир, фронтенд-розробник на HTML, CSS і vanilla JavaScript. Перетворюю макети Figma (та інші) на швидкі адаптивні сторінки з робочими формами.</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#works">Дивитися роботи</a>
+            <a class="btn btn--ghost" href="#contacts">Написати мені</a>
+          </div>
+          <dl class="facts">
+            <div><dt>Перший результат</dt><dd><span data-count="2">2</span> дні</dd></div>
+            <div><dt>Адаптив</dt><dd><span data-count="100">100</span>%</dd></div>
+            <div><dt>Правок у замовленні</dt><dd>до <span data-count="5">5</span></dd></div>
+          </dl>
+        </div>
+      </div>
+      <div class="ticker" aria-hidden="true"><div class="ticker__track">
+        <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Vanilla JS</span><span>Tailwind</span><span>PHP</span><span>Chart.js</span><span>REST API</span>
+        <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Vanilla JS</span><span>Tailwind</span><span>PHP</span><span>Chart.js</span><span>REST API</span>
+      </div></div>
+    </section>
+
+    <section class="section" id="stack">
+      <div class="container">
+        <h2>З чим я працюю і що роблю</h2>
+        <div class="stack">
+          <article class="stack__main">
+            <h3>Стек</h3>
+            <ul class="tags">
+              <li>HTML5</li><li>CSS3</li><li>JavaScript</li><li>Vanilla JS</li><li>Tailwind CSS</li><li>PHP</li><li>Chart.js</li><li>REST API</li><li>Figma → HTML</li><li>Telegram-боти</li>
+            </ul>
+            <p>Пишу семантичну верстку, підключаю форми з валідацією та захистом від спаму, відправляю заявки на пошту або в Telegram. Вихідні коди й деплой на ваш хостинг входять у замовлення.</p>
+          </article>
+          <article class="stack__item"><h3>Лендінги</h3><p>За макетом Figma. Анімації, FAQ, галереї, робоча форма заявок.</p></article>
+          <article class="stack__item"><h3>Копія дизайну</h3><p>Перезберу сайт за референсом на ваших текстах і у вашому стилі. Без копіювання чужих логотипів.</p></article>
+          <article class="stack__item"><h3>Дашборди</h3><p>Графіки Chart.js, фільтри, експорт у PDF, Excel і JSON, підключення API з авторизацією.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="works">
+      <div class="container">
+        <h2>Роботи</h2>
+        <div class="filters" id="filters" role="group" aria-label="Фільтр робіт"></div>
+        <div class="gallery" id="gallery"></div>
+      </div>
+    </section>
+
+    <section class="section" id="pricing">
+      <div class="container">
+        <h2>Ціни</h2>
+        <div class="filters" id="priceTabs" role="group" aria-label="Напрям"></div>
+        <div class="pricing" id="pricing-grid"></div>
+        <p class="note">Прискорена здача за доплату. У кожному пакеті: вихідний код, оптимізація швидкості, деплой на ваш хостинг.</p>
+      </div>
+    </section>
+
+    <section class="section" id="contacts">
+      <div class="container">
+        <h2>Обговоримо проєкт?</h2>
+        <p class="contacts__lead">Надішліть макет або посилання на референс, і я скажу строк і ціну.</p>
+        <div class="contacts">
+          <a class="contact" href="https://t.me/USERNAME" target="_blank" rel="noopener"><b>Telegram</b><span>Найшвидше відповідаю тут</span></a>
+          <a class="contact" href="https://instagram.com/USERNAME" target="_blank" rel="noopener"><b>Instagram</b><span>Свіжі роботи</span></a>
+          <a class="contact" href="https://www.fiverr.com/USERNAME" target="_blank" rel="noopener"><b>Fiverr</b><span>Замовлення з гарантією платформи</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© <span id="year">2026</span> Volodymyr.dev</p>
+      <a href="#hero">Вгору</a>
+    </div>
+  </footer>
+
+  <dialog class="modal" id="modal" aria-labelledby="modalTitle">
+    <button class="icon-btn modal__close" id="modalClose" type="button" aria-label="Закрити">✕</button>
+    <img id="modalImg" src="" alt="">
+    <div class="modal__body">
+      <h3 id="modalTitle"></h3><p id="modalDesc"></p><ul class="tags" id="modalTags"></ul>
+      <div class="modal__nav"><button class="btn btn--ghost" id="modalPrev" type="button">Назад</button><button class="btn btn--ghost" id="modalNext" type="button">Далі</button></div>
+    </div>
+  </dialog>
+
+  <script src="js/modules/theme.js" defer></script>
+  <script src="js/modules/nav.js" defer></script>
+  <script src="js/modules/reveal.js" defer></script>
+  <script src="js/modules/counters.js" defer></script>
+  <script src="js/modules/hello.js" defer></script>
+  <script src="js/modules/wolf.js" defer></script>
+  <script src="js/modules/gallery.js" defer></script>
+  <script src="js/modules/pricing.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>

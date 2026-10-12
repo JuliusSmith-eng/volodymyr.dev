@@ -1,0 +1,29 @@
+.container{width:min(1180px,100% - 2*clamp(16px,4vw,40px));margin-inline:auto}
+.section{padding-block:var(--section)}
+.header{position:fixed;inset:0 0 auto;height:var(--header-h);z-index:50;display:flex;align-items:center;transition:background .3s,backdrop-filter .3s,border-color .3s;border-bottom:1px solid transparent}
+.header.is-scrolled{background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(14px);border-color:var(--border)}
+.header__inner{display:flex;align-items:center;gap:12px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:700;font-size:1.5rem;line-height:1;margin-right:auto}
+.logo__mark{display:block;height:50px;width:auto}
+.logo span{color:var(--accent-text);margin-left:-.3em}
+.nav{display:flex;gap:clamp(14px,3vw,34px)}
+.nav a{position:relative;font-family:var(--font-label);font-weight:500;padding:6px 0}
+.nav a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease)}
+.nav a:hover::after,.nav a.is-active::after{transform:scaleX(1)}
+.i-sun{display:none}
+[data-theme="light"] .i-sun{display:block}
+[data-theme="light"] .i-moon{display:none}
+.burger{display:none;gap:5px;align-content:center}
+.burger span{display:block;width:20px;height:2px;background:currentColor;transition:transform .3s}
+.burger[aria-expanded="true"] span:first-child{transform:translateY(3.5px) rotate(45deg)}
+.burger[aria-expanded="true"] span:last-child{transform:translateY(-3.5px) rotate(-45deg)}
+.footer{border-top:1px solid var(--border);padding:28px 0;color:var(--muted)}
+.footer__inner{display:flex;justify-content:space-between;gap:16px}
+@media (max-width:760px){
+  .logo{font-size:1.15rem;gap:8px}
+  .logo__mark{height:38px}
+  .burger{display:grid}
+  .nav{position:fixed;inset:var(--header-h) 0 auto;flex-direction:column;gap:0;background:var(--bg);border-bottom:1px solid var(--border);padding:8px 20px 20px;transform:translateY(-130%);transition:transform .4s var(--ease);visibility:hidden}
+  .nav.is-open{transform:none;visibility:visible}
+  .nav a{padding:14px 0;font-size:1.2rem}
+}

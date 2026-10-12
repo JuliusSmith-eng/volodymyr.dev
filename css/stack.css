@@ -1,0 +1,7 @@
+.stack{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:var(--gap)}
+.stack__main,.stack__item{background:var(--surface);border:1px solid var(--border);padding:clamp(20px,3vw,32px);transition:transform .35s var(--ease),border-color .3s}
+.stack__main{grid-column:1/-1;border-radius:24px}
+.stack__item{border-radius:10px}
+.stack__item:hover{transform:translateY(-6px);border-color:var(--accent)}
+.stack__item p{color:var(--muted)}
+@media (min-width:900px){.stack__main{grid-column:span 3}}

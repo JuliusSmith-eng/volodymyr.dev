@@ -1,0 +1,16 @@
+:root{
+  --bg:#0A1824; --surface:#10202F; --surface-2:#16293B;
+  --text:#F5F5DC; --muted:#A9B4B8; --accent:#FE5516; --accent-text:#FE5516; --on-accent:#0A1824;
+  --border:rgba(245,245,220,.14); --shadow:0 24px 60px rgba(0,0,0,.4);
+  --font-display:"Tektur",system-ui,sans-serif;
+  --font-label:"Oswald","Arial Narrow",Impact,sans-serif;
+  --font-body:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --fs-h1:clamp(1.7rem,4.2vw,3.4rem); --fs-h2:clamp(2rem,5vw,3.6rem);
+  --gap:clamp(16px,2.5vw,28px); --section:clamp(64px,10vw,130px); --header-h:68px;
+  --ease:cubic-bezier(.22,.8,.3,1);
+}
+[data-theme="light"]{
+  --bg:#F5F5DC; --surface:#EFE6C9; --surface-2:#E8D9BB;
+  --text:#0A1824; --muted:#4B5A66; --accent-text:#B73A07;
+  --border:rgba(10,24,36,.16); --shadow:0 24px 50px rgba(10,24,36,.14);
+}

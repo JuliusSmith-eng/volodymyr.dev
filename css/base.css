@@ -1,0 +1,24 @@
+*,*::before,*::after{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:var(--header-h);-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--text);font:400 clamp(.95rem,.9rem + .2vw,1rem)/1.6 var(--font-body);transition:background .4s,color .4s;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--font-display);font-weight:700;line-height:1.05;letter-spacing:.01em}
+h2{font-size:var(--fs-h2);margin-bottom:clamp(24px,4vw,48px)}
+h3{font-size:1.5rem;font-weight:500;margin-bottom:.5em}
+p{max-width:62ch}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--accent);color:var(--on-accent);padding:8px 14px;z-index:100;border-radius:6px}
+.skip:focus{left:8px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 28px;border-radius:999px;font-weight:700;border:2px solid var(--accent);cursor:pointer;font-family:var(--font-label);font-size:1rem;color:var(--text);background:transparent;transition:transform .25s var(--ease),background .25s,color .25s}
+.btn:hover{transform:translateY(-3px)}
+.btn--primary{background:var(--accent);color:var(--on-accent)}
+.btn--ghost:hover{background:var(--accent);color:var(--on-accent)}
+.icon-btn{width:44px;height:44px;border-radius:50%;border:1px solid var(--border);background:var(--surface);color:var(--text);display:grid;place-items:center;cursor:pointer;transition:transform .3s var(--ease),border-color .2s}
+.icon-btn:hover{border-color:var(--accent);transform:rotate(15deg)}
+.tags{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+.tags li{padding:6px 14px;border:1px solid var(--border);border-radius:999px;font-size:.9rem;font-family:var(--font-label);background:var(--surface-2)}
+.progress{position:fixed;top:0;left:0;height:3px;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:left;z-index:60}
+html.js [data-reveal]{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+html.js [data-reveal].is-visible{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}html.js [data-reveal]{opacity:1;transform:none}}
