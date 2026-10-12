@@ -1,0 +1,71 @@
+/* Навбар в стиле Apple: стекло, подсветка за курсором, увеличение пунктов, поиск, сжатие при скролле */
+.header__bar{position:relative;width:100%;max-width:100%;margin-inline:auto;
+  transition:max-width .6s var(--ease),background .3s,box-shadow .3s,border-color .3s}
+.header.is-scrolled .header__bar{max-width:min(1040px,100%)}
+.header.is-searching .header__bar{max-width:100%}
+.header__inner{position:relative;z-index:1}
+
+/* мягкий свет под курсором и блик на верхней кромке */
+.header__bar::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .35s;
+  background:radial-gradient(190px circle at var(--mx,-400px) var(--my,-400px),color-mix(in srgb,var(--text) 9%,transparent),transparent 70%)}
+.header__bar::after{content:"";position:absolute;left:14px;right:14px;top:-1px;height:1px;pointer-events:none;opacity:0;transition:opacity .35s;
+  background:linear-gradient(90deg,transparent calc(var(--mx,-400px) - 134px),color-mix(in srgb,var(--text) 80%,transparent) calc(var(--mx,-400px) - 14px),transparent calc(var(--mx,-400px) + 106px))}
+.header__bar:hover::before,.header__bar:hover::after{opacity:1}
+
+/* пункты меню: наведённый растёт, остальные приглушаются */
+@media (min-width:881px){.nav{position:relative}}
+.nav a{display:inline-block;transform-origin:50% 60%;transition:color .25s,transform .4s var(--ease),opacity .3s}
+.nav a::after{display:none}
+@media (hover:hover) and (min-width:881px){
+  .nav:hover a{opacity:.5}
+  .nav:hover a:hover,.nav a:focus-visible{opacity:1;transform:scale(1.1);color:var(--text)}
+}
+.nav__ind{position:absolute;left:0;bottom:1px;height:2px;width:var(--w,0);border-radius:2px;pointer-events:none;opacity:0;
+  background:var(--accent);box-shadow:0 0 12px color-mix(in srgb,var(--accent) 80%,transparent);
+  transform:translateX(var(--x,0));transition:transform .45s var(--ease),width .45s var(--ease),opacity .3s}
+@media (max-width:880px){.nav__ind{display:none}}
+
+/* поиск */
+.search{display:flex;align-items:center}
+.header .search__toggle{transition:width .35s var(--ease),opacity .2s,background .25s,border-color .25s}
+.search.is-open .search__toggle{width:0;opacity:0;overflow:hidden;border-width:0;pointer-events:none}
+.search__field{display:flex;align-items:center;gap:8px;height:40px;width:0;padding-inline:0;margin:0;overflow:hidden;opacity:0;white-space:nowrap;
+  color:var(--accent-text);border:1px solid transparent;border-radius:12px;
+  transition:width .45s var(--ease),opacity .25s,padding .45s var(--ease),margin .45s var(--ease),border-color .3s,background .3s}
+.search.is-open .search__field{width:clamp(190px,22vw,270px);opacity:1;padding-inline:11px 8px;margin-right:4px;
+  border-color:color-mix(in srgb,var(--accent) 55%,transparent);background:color-mix(in srgb,var(--accent) 8%,transparent)}
+.search__field svg{flex:none}
+.search__field input{flex:1;min-width:0;height:100%;border:0;outline:0;background:transparent;color:var(--text);font:500 .95rem var(--font-body)}
+.search__field input::placeholder{color:var(--muted)}
+.search__field kbd{flex:none;font:500 .68rem var(--font-body);color:var(--muted);padding:2px 6px;border:1px solid var(--border);border-radius:6px}
+.search__close{flex:none;width:24px;height:24px;border:0;border-radius:6px;background:transparent;color:var(--muted);font-size:1.25rem;line-height:1;cursor:pointer}
+.search__close:hover{color:var(--text);background:color-mix(in srgb,var(--text) 10%,transparent)}
+.search__results{position:absolute;top:calc(100% + 8px);right:0;width:min(400px,100%);margin:0;padding:6px;list-style:none;z-index:2;
+  background:color-mix(in srgb,var(--surface) 95%,transparent);background-image:linear-gradient(180deg,color-mix(in srgb,var(--text) 6%,transparent),transparent 55%);
+  backdrop-filter:blur(16px) saturate(1.5);-webkit-backdrop-filter:blur(16px) saturate(1.5);
+  border:1px solid var(--border);border-radius:var(--bar-radius);box-shadow:var(--bar-shadow-lg);
+  opacity:0;transform:translateY(-8px);visibility:hidden;transition:opacity .25s,transform .35s var(--ease),visibility .25s}
+.search.is-open .search__results{opacity:1;transform:none;visibility:visible}
+.search__head{padding:8px 12px 4px;color:var(--muted);font-size:.8rem}
+.search__item{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;padding:10px 12px;border:0;border-radius:10px;
+  background:transparent;color:var(--text);font:500 1rem var(--font-label);text-align:left;cursor:pointer}
+.search__item small{flex:none;color:var(--muted);font:400 .75rem var(--font-body)}
+.search__item[aria-selected="true"]{background:color-mix(in srgb,var(--accent) 16%,transparent)}
+.search__item[aria-selected="true"] small{color:var(--text)}
+.search__empty{padding:14px 12px;color:var(--muted);font-size:.9rem}
+
+@media (max-width:1100px){.header.is-searching .header__cta{display:none}}
+@media (max-width:880px){
+  .search.is-open .search__field{position:absolute;left:8px;right:8px;top:6px;bottom:6px;width:auto;height:auto;margin:0;z-index:3;background:var(--surface)}
+  .search__results{width:100%}
+}
+/* мобильная шапка: всё помещается и на 320 px */
+@media (max-width:880px){
+  .header .icon-btn{width:38px;height:38px}
+  .header__actions{gap:2px;flex:none}
+  .logo{flex:0 1 auto;min-width:0;overflow:hidden}
+}
+@media (max-width:420px){.logo{font-size:.95rem;gap:6px}.logo__mark{height:28px}}
+@media (max-width:370px){.logo span{display:none}}
+@media (max-width:340px){.logo{font-size:0;gap:0}}
+@media (prefers-reduced-motion:reduce){.nav__ind,.search__field,.search__results,.header__bar{transition:none!important}}

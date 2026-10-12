@@ -15,6 +15,7 @@
   function esc(s) { var d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
 
   App.gallery = {
+    works: WORKS,
     init: function () {
       var grid = document.getElementById("gallery");
       var filters = document.getElementById("filters");
@@ -73,6 +74,13 @@
         x0 = null;
       });
       render("all");
+      // Открыть работу из поиска: сбрасываем фильтр и показываем окно
+      App.gallery.open = function (n) {
+        filters.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", x.dataset.cat === "all"); });
+        render("all");
+        show(n);
+        if (modal.showModal) modal.showModal(); else modal.setAttribute("open", "");
+      };
     }
   };
 })();
