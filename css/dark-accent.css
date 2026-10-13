@@ -1,0 +1,4 @@
+/* Тёмная тема: заголовки блоков, карточек и теги стека оранжевые. Светлая тема остаётся как была */
+:root:not([data-theme="light"]) .section h2,
+:root:not([data-theme="light"]) .stack h3,
+:root:not([data-theme="light"]) .tags li{color:var(--accent)}

@@ -9,10 +9,6 @@
   --gap:clamp(16px,2.5vw,28px); --section:clamp(64px,10vw,130px); --header-h:72px;
   --bar-gap:10px; --bar-x:clamp(12px,2vw,20px); --bar-radius:16px;
   --bar-shadow:0 10px 30px rgba(0,0,0,.26); --bar-shadow-lg:0 16px 44px rgba(0,0,0,.38);
-  --ts-track:#08141F; --ts-track-shadow:inset 3px 3px 8px rgba(0,0,0,.6),inset -3px -3px 8px rgba(255,255,255,.06);
-  --ts-knob:#16293B; --ts-knob-shadow:4px 4px 9px rgba(0,0,0,.55),-3px -3px 8px rgba(255,255,255,.07);
-  --ts-hole:#040C14; --ts-hole-shadow:inset 2px 2px 5px rgba(0,0,0,.9),inset -1px -1px 3px rgba(255,255,255,.07);
-  --ts-hole-deep:#010407; --ts-hole-deep-shadow:inset 3px 3px 7px rgba(0,0,0,1);
   --ease:cubic-bezier(.22,.8,.3,1);
 }
 [data-theme="light"]{
@@ -20,8 +16,4 @@
   --text:#0A1824; --muted:#4B5A66; --accent-text:#B73A07;
   --border:rgba(10,24,36,.16); --shadow:0 24px 50px rgba(10,24,36,.14);
   --bar-shadow:0 10px 30px rgba(10,24,36,.12); --bar-shadow-lg:0 16px 44px rgba(10,24,36,.18);
-  --ts-track:#E8D9BB; --ts-track-shadow:inset 3px 3px 7px rgba(10,24,36,.18),inset -3px -3px 7px rgba(255,255,255,.95);
-  --ts-knob:#F5F5DC; --ts-knob-shadow:3px 3px 7px rgba(10,24,36,.22),-3px -3px 8px rgba(255,255,255,.95);
-  --ts-hole:#D6C49A; --ts-hole-shadow:inset 2px 2px 4px rgba(10,24,36,.35),inset -1px -1px 3px rgba(255,255,255,.7);
-  --ts-hole-deep:#BFAB7C; --ts-hole-deep-shadow:inset 3px 3px 6px rgba(10,24,36,.5);
 }

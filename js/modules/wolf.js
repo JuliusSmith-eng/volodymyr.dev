@@ -252,6 +252,8 @@
       }
 
       function onPointer(e) {
+        // Касание пальцем курсором не является: на телефоне волк просто крутит ролик по кругу
+        if (e.pointerType === "touch") return;
         var r = box.getBoundingClientRect();
         var dx = e.clientX - (r.left + r.width / 2);
         var dy = e.clientY - (r.top + r.height * 0.2); // голова примерно на 20% высоты

@@ -65,7 +65,17 @@
   .header__actions{gap:2px;flex:none}
   .logo{flex:0 1 auto;min-width:0;overflow:hidden}
 }
-@media (max-width:420px){.logo{font-size:.95rem;gap:6px}.logo__mark{height:28px}}
-@media (max-width:370px){.logo span{display:none}}
-@media (max-width:340px){.logo{font-size:0;gap:0}}
+@media (max-width:480px){.logo{font-size:.95rem;gap:6px}.logo__mark{height:28px}}
+@media (max-width:399px){.logo span{display:none}}
+@media (max-width:360px){.logo{font-size:0;gap:0}}
 @media (prefers-reduced-motion:reduce){.nav__ind,.search__field,.search__results,.header__bar{transition:none!important}}
+
+/* узкий десктоп: пункты ближе друг к другу, чтобы влезли логотип и кнопки справа */
+@media (min-width:881px) and (max-width:1000px){.nav{gap:12px}}
+@media (min-width:881px) and (max-width:940px){.logo{font-size:1rem;gap:8px}.logo__mark{height:30px}}
+
+/* кнопка «Написати мені»: оранжевая */
+.header__cta{background:var(--accent);border-color:var(--accent);color:var(--on-accent);
+  box-shadow:0 6px 18px color-mix(in srgb,var(--accent) 32%,transparent)}
+.header__cta:hover{background:color-mix(in srgb,var(--accent) 84%,#fff);border-color:transparent;color:var(--on-accent);
+  box-shadow:0 10px 26px color-mix(in srgb,var(--accent) 45%,transparent)}

@@ -1,42 +1,45 @@
 (function () {
   var App = (window.App = window.App || {});
-  var KEY = "theme";
-  var WALK_MS = 520;
+  var KEY = "theme", current = "dark";
+  var root = document.documentElement;
+
   function apply(t) {
-    document.documentElement.setAttribute("data-theme", t);
+    current = t;
+    root.setAttribute("data-theme", t);
     var m = document.querySelector('meta[name="theme-color"]');
     if (m) m.content = t === "light" ? "#F5F5DC" : "#0A1824";
+    var b = document.getElementById("themeToggle");
+    if (b) b.setAttribute("aria-checked", String(t === "dark"));
   }
+
   App.theme = {
     init: function () {
       var saved = null;
       try { saved = localStorage.getItem(KEY); } catch (e) {}
-      var t = saved || (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
-      apply(t);
-
-      var btn = document.getElementById("themeToggle");
-      var busy = false;
+      apply(saved || (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark"));
+    },
+    get: function () { return current; },
+    // Переключение темы. origin {x, y} в координатах окна: от этой точки идёт круговая волна
+    toggle: function (origin) {
+      var next = current === "dark" ? "light" : "dark";
+      try { localStorage.setItem(KEY, next); } catch (e) {}
       var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-      function save() { try { localStorage.setItem(KEY, t); } catch (e) {} }
-
-      btn.addEventListener("click", function () {
-        if (busy) return;
-        var next = t === "dark" ? "light" : "dark";
-        if (reduce) { t = next; apply(t); save(); return; }
-
-        busy = true;
-        btn.classList.add("is-switching");
-        setTimeout(function () {
-          t = next;
-          apply(t);
-          save();
-          btn.classList.add("is-flip");
-        }, WALK_MS);
-        setTimeout(function () {
-          btn.classList.remove("is-switching", "is-flip");
-          busy = false;
-        }, 1000);
-      });
+      if (reduce) { apply(next); return; }
+      if (!document.startViewTransition || !origin) {
+        // запасной вариант без View Transitions: короткое плавное перекрашивание
+        root.classList.add("theme-fade");
+        apply(next);
+        setTimeout(function () { root.classList.remove("theme-fade"); }, 500);
+        return;
+      }
+      var vt = document.startViewTransition(function () { apply(next); });
+      vt.ready.then(function () {
+        var r = Math.hypot(Math.max(origin.x, innerWidth - origin.x), Math.max(origin.y, innerHeight - origin.y));
+        root.animate(
+          { clipPath: ["circle(0px at " + origin.x + "px " + origin.y + "px)", "circle(" + r + "px at " + origin.x + "px " + origin.y + "px)"] },
+          { duration: 800, easing: "cubic-bezier(.22,.8,.3,1)", pseudoElement: "::view-transition-new(root)" }
+        );
+      }, function () {});
     }
   };
 })();
