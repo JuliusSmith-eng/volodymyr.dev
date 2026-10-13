@@ -32,12 +32,13 @@
       });
       function render(k) {
         grid.innerHTML = PLANS[k].map(function (p) {
-          return '<article class="plan' + (p.hot ? " plan--hot" : "") + '">' +
+          return '<article class="plan' + (p.hot ? " plan--hot" : "") + '" data-reveal>' +
             (p.hot ? '<span class="plan__badge">Обирають частіше</span>' : "") +
             "<h3>" + p.name + '</h3><div class="plan__price">$' + p.price + '</div><p class="plan__time">Строк: ' + p.time + "</p><ul>" +
             p.items.map(function (t) { return "<li>" + t + "</li>"; }).join("") +
             '</ul><a class="btn ' + (p.hot ? "btn--primary" : "btn--ghost") + '" href="#contacts">Замовити</a></article>';
         }).join("");
+        if (App.reveal) App.reveal.observe(grid);
       }
       tabs.addEventListener("click", function (e) {
         var b = e.target.closest("button"); if (!b) return;

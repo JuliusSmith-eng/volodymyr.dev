@@ -19,6 +19,18 @@ p{max-width:62ch}
 .tags{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
 .tags li{padding:6px 14px;border:1px solid var(--border);border-radius:999px;font-size:.9rem;font-family:var(--font-label);background:var(--surface-2)}
 .progress{position:fixed;top:0;left:0;height:3px;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:left;z-index:60}
-html.js [data-reveal]{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
-html.js [data-reveal].is-visible{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}html.js [data-reveal]{opacity:1;transform:none}}
+/* Скрол-анімації: напрямок задається значенням data-reveal (up|left|right|scale|blur) */
+html.js [data-reveal]{opacity:0;
+  transform:translate3d(var(--rv-x,0),var(--rv-y,50px),0) scale(var(--rv-s,1));
+  filter:blur(var(--rv-b,0));
+  transition:opacity .85s var(--ease),transform .85s var(--ease),filter .85s var(--ease);
+  transition-delay:var(--reveal-delay,0s);will-change:opacity,transform}
+html.js [data-reveal="left"]{--rv-x:-72px;--rv-y:0}
+html.js [data-reveal="right"]{--rv-x:72px;--rv-y:0}
+html.js [data-reveal="scale"]{--rv-s:.86;--rv-y:26px}
+html.js [data-reveal="blur"]{--rv-b:16px;--rv-y:30px}
+html.js [data-reveal].is-visible{opacity:1;transform:translate3d(0,0,0) scale(1);filter:blur(0)}
+html.js [data-reveal].is-hiding{transition-delay:0s}
+/* Паралакс: окрема властивість translate, щоб не конфліктувати з transform-появою */
+html.js [data-parallax]{translate:0 var(--px,0px);will-change:translate}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}html.js [data-reveal]{opacity:1;transform:none;filter:none}html.js [data-parallax]{translate:none!important}}

@@ -31,10 +31,11 @@
       function render(cat) {
         current = cat === "all" ? WORKS : WORKS.filter(function (w) { return w.cat === cat; });
         grid.innerHTML = current.map(function (w, i) {
-          return '<button class="card" type="button" data-i="' + i + '" style="animation-delay:' + i * 60 + 'ms">' +
+          return '<button class="card" type="button" data-i="' + i + '" data-reveal>' +
             '<img src="' + w.img + '" alt="' + esc(w.title) + '" width="800" height="500" loading="lazy">' +
             '<span class="card__body"><h3>' + esc(w.title) + "</h3><span>" + CATS[w.cat] + "</span></span></button>";
         }).join("");
+        if (App.reveal) App.reveal.observe(grid);
       }
 
       function show(i) {
