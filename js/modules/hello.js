@@ -5,17 +5,28 @@
       var el = document.getElementById("hello");
       if (!el) return;
       var i = 0;
-      el.querySelectorAll(".hello__col > span").forEach(function (line) {
-        var text = line.textContent;
-        line.textContent = "";
-        line.setAttribute("aria-hidden", "true");
-        text.split("").forEach(function (c) {
-          var s = document.createElement("span");
-          s.className = "ch";
-          s.style.setProperty("--i", i++);
-          s.textContent = c;
-          line.appendChild(s);
+      // Разбиваем текущие надписи на буквы (текст приходит из i18n, см. data-i18n в разметке)
+      function build() {
+        i = 0;
+        el.querySelectorAll(".hello__col > span").forEach(function (line) {
+          var text = line.textContent;
+          line.textContent = "";
+          line.setAttribute("aria-hidden", "true");
+          text.split("").forEach(function (c) {
+            var s = document.createElement("span");
+            s.className = "ch";
+            s.style.setProperty("--i", i++);
+            s.textContent = c;
+            line.appendChild(s);
+          });
         });
+      }
+      build();
+      // Смена языка: i18n уже подставил новый текст, пересобираем буквы и сразу показываем надпись
+      if (App.i18n) App.i18n.onChange(function () {
+        el.classList.remove("is-on");
+        build();
+        setTimeout(function () { el.classList.add("is-on"); }, 60);
       });
       if (matchMedia("(prefers-reduced-motion: reduce)").matches) { el.classList.add("is-on"); return; }
       // Печатаем надпись, держим, стираем и начинаем заново

@@ -1,12 +1,9 @@
 (function () {
   var App = (window.App = window.App || {});
 
-  var SECTIONS = [
-    { title: "Стек", hint: "технології та послуги", id: "stack", kw: "html css javascript js tailwind php chart.js api технології послуги стек figma" },
-    { title: "Роботи", hint: "галерея проєктів", id: "works", kw: "роботи проєкти портфоліо галерея лендінг дашборд" },
-    { title: "Ціни", hint: "пакети та терміни", id: "pricing", kw: "ціни вартість пакети basic standard premium скільки коштує" },
-    { title: "Контакти", hint: "Telegram, Instagram, Fiverr", id: "contacts", kw: "контакти зв'язок telegram instagram fiverr написати" }
-  ];
+  // Разделы и ключевые слова поиска по языкам лежат в js/modules/i18n.js (sections)
+  function sections() { return App.i18n.t("sections"); }
+  var T = function (k) { return App.i18n.t(k); };
 
   App.search = {
     init: function () {
@@ -46,16 +43,16 @@
         q = q.trim().toLowerCase();
         var res = [];
         if (!q) {
-          return SECTIONS.map(function (s) { return { kind: "section", title: s.title, hint: s.hint, id: s.id }; });
+          return sections().map(function (s) { return { kind: "section", title: s.title, hint: s.hint, id: s.id }; });
         }
         var tokens = q.split(/\s+/);
         (App.gallery && App.gallery.works || []).forEach(function (w, i) {
           var h = haystack(w);
-          if (tokens.every(function (t) { return h.indexOf(t) !== -1; })) res.push({ kind: "work", title: w.title, hint: "робота", index: i });
+          if (tokens.every(function (t) { return h.indexOf(t) !== -1; })) res.push({ kind: "work", title: w.title, hint: T("search.hintWork"), index: i });
         });
-        SECTIONS.forEach(function (s) {
+        sections().forEach(function (s) {
           var h = (s.title + " " + s.kw).toLowerCase();
-          if (tokens.every(function (t) { return h.indexOf(t) !== -1; })) res.push({ kind: "section", title: s.title, hint: "розділ", id: s.id });
+          if (tokens.every(function (t) { return h.indexOf(t) !== -1; })) res.push({ kind: "section", title: s.title, hint: T("search.hintSection"), id: s.id });
         });
         return res.slice(0, 7);
       }
@@ -63,8 +60,8 @@
       function render(q) {
         items = find(q); active = items.length ? 0 : -1;
         var html = "";
-        if (!q.trim()) html += '<li class="search__head" role="presentation">Швидкий перехід</li>';
-        if (!items.length) html += '<li class="search__empty" role="presentation">Нічого не знайдено. Спробуйте «лендінг», «ціни» або «API».</li>';
+        if (!q.trim()) html += '<li class="search__head" role="presentation">' + T("search.head") + "</li>";
+        if (!items.length) html += '<li class="search__empty" role="presentation">' + T("search.empty") + "</li>";
         items.forEach(function (it, i) {
           var t = document.createElement("div"); t.textContent = it.title;
           var h = document.createElement("div"); h.textContent = it.hint;
@@ -96,6 +93,7 @@
         }
       }
 
+      App.i18n.onChange(function () { if (isOpen()) render(input.value); });
       toggle.addEventListener("click", open);
       close.addEventListener("click", function () { shut(true); });
       input.addEventListener("input", function () { render(input.value); });

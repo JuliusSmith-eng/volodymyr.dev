@@ -1,0 +1,34 @@
+/* Футер: статус, навигация, контакты и огромный контурный логотип с «прожектором» */
+.footer{position:relative;overflow:hidden;border-top:1px solid var(--border);color:var(--muted);
+  padding:clamp(48px,7vw,88px) 0 clamp(18px,3vw,36px);
+  background:radial-gradient(70% 90% at 50% 125%,color-mix(in srgb,var(--accent) 16%,transparent),transparent 70%)}
+.footer__grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:clamp(28px,5vw,72px);padding-bottom:clamp(36px,5vw,64px)}
+.footer__status{display:inline-flex;align-items:center;gap:10px;padding:8px 16px 8px 14px;border:1px solid var(--border);border-radius:999px;
+  background:var(--surface);color:var(--text);font:500 .95rem var(--font-label);letter-spacing:.02em}
+.footer__dot{position:relative;width:9px;height:9px;border-radius:50%;background:#3ddc84}
+.footer__dot::after{content:"";position:absolute;inset:0;border-radius:50%;background:#3ddc84;animation:footer-ping 2.2s var(--ease) infinite}
+.footer__tag{margin-top:20px;max-width:34ch;color:var(--muted)}
+.footer__label{margin-bottom:16px;color:var(--accent-text);font:600 .8rem var(--font-label);letter-spacing:.16em;text-transform:uppercase}
+.footer__list{display:grid;gap:12px;margin:0;padding:0;list-style:none}
+.footer__list a{position:relative;display:inline-flex;align-items:center;gap:8px;color:var(--text);font-size:1.02rem;transition:color .25s,transform .35s var(--ease)}
+.footer__list a::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
+.footer__list a:hover{color:var(--accent-text);transform:translateX(5px)}
+.footer__list a:hover::after{transform:scaleX(1)}
+.footer__arr{display:inline-block;color:var(--accent-text);transition:transform .35s var(--ease)}
+.footer__list a:hover .footer__arr{transform:translate(3px,-3px)}
+.footer__bar{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;padding:18px 0;border-top:1px solid var(--border);font-size:.86rem}
+.footer__bar p{max-width:none}
+/* огромный логотип: контур, внутри оранжевый «прожектор» идёт за курсором */
+.footer__word{--r:220px;margin-top:clamp(10px,2vw,26px);font:700 10.5vw/.82 var(--font-display);letter-spacing:-.02em;text-transform:uppercase;
+  white-space:nowrap;text-align:center;-webkit-user-select:none;user-select:none;pointer-events:none}
+.footer__word-text{position:relative;display:inline-block;color:transparent;-webkit-text-stroke:1.5px color-mix(in srgb,var(--text) 30%,transparent)}
+.footer__word-text::after{content:attr(data-text);position:absolute;inset:0;color:var(--accent);-webkit-text-stroke:0;
+  -webkit-mask-image:radial-gradient(circle var(--r) at var(--mx,50%) var(--my,55%),#000 0,rgba(0,0,0,.55) 45%,transparent 100%);
+  mask-image:radial-gradient(circle var(--r) at var(--mx,50%) var(--my,55%),#000 0,rgba(0,0,0,.55) 45%,transparent 100%)}
+@keyframes footer-ping{0%{transform:scale(1);opacity:.7}70%,100%{transform:scale(3.2);opacity:0}}
+@media (max-width:720px){
+  .footer__grid{grid-template-columns:1fr 1fr}
+  .footer__col--brand{grid-column:1/-1}
+  .footer__word-text{-webkit-text-stroke-width:1px}
+}
+@media (prefers-reduced-motion:reduce){.footer__dot::after{animation:none}}
