@@ -211,7 +211,15 @@
         <p>© <span id="year">2026</span> Volodymyr.dev</p>
         <p data-i18n="footer.made">Зверстано вручну: HTML, CSS і vanilla JS</p>
       </div>
-      <div class="footer__word" id="footerWord" aria-hidden="true"><span class="footer__word-text" data-text="Volodymyr.dev">Volodymyr.dev</span></div>
+      <div class="footer__stage" id="footerStage">
+        <!-- волк: один спрайт на 12 направлений взгляда (assets/wolf/peek.webp), грузится только перед показом футера -->
+        <div class="footer__wolf" id="footerWolf" aria-hidden="true"><div class="footer__wolf-sprite"></div></div>
+        <div class="footer__word" id="footerWord" aria-hidden="true">
+          <span class="footer__word-text" data-text="Volodymyr.dev">Volodymyr.dev</span>
+          <!-- «переливание»: оранжевая копия надписи под маской, двигается только transform'ом (без перерисовки) -->
+          <div class="footer__spot" id="footerSpot"><span class="footer__spot-text"></span></div>
+        </div>
+      </div>
     </div>
   </footer>
 

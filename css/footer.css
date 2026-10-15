@@ -19,16 +19,36 @@
 .footer__bar{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;padding:18px 0;border-top:1px solid var(--border);font-size:.86rem}
 .footer__bar p{max-width:none}
 /* огромный логотип: контур, внутри оранжевый «прожектор» идёт за курсором */
-.footer__word{--r:220px;margin-top:clamp(10px,2vw,26px);font:700 10.5vw/.82 var(--font-display);letter-spacing:-.02em;text-transform:uppercase;
+.footer__word{--r:220px;position:relative;font:700 10.5vw/.82 var(--font-display);letter-spacing:-.02em;text-transform:uppercase;
   white-space:nowrap;text-align:center;-webkit-user-select:none;user-select:none;pointer-events:none}
 .footer__word-text{position:relative;display:inline-block;color:transparent;-webkit-text-stroke:1.5px color-mix(in srgb,var(--text) 30%,transparent)}
-.footer__word-text::after{content:attr(data-text);position:absolute;inset:0;color:var(--accent);-webkit-text-stroke:0;
-  -webkit-mask-image:radial-gradient(circle var(--r) at var(--mx,50%) var(--my,55%),#000 0,rgba(0,0,0,.55) 45%,transparent 100%);
-  mask-image:radial-gradient(circle var(--r) at var(--mx,50%) var(--my,55%),#000 0,rgba(0,0,0,.55) 45%,transparent 100%)}
+/* «переливание»: контейнер с маской едет вправо, а внутри текст едет влево на столько же,
+   поэтому буквы стоят на месте, а видимое пятно скользит. Всё через transform = без перерисовки */
+.footer__spot{position:absolute;left:0;top:50%;width:var(--spot-d,300px);height:var(--spot-d,300px);margin-top:calc(var(--spot-d,300px) / -2);
+  overflow:hidden;pointer-events:none;opacity:0;will-change:transform;
+  -webkit-mask-image:radial-gradient(circle closest-side,#000 0,rgba(0,0,0,.55) 45%,transparent 100%);
+  mask-image:radial-gradient(circle closest-side,#000 0,rgba(0,0,0,.55) 45%,transparent 100%);
+  transition:transform .32s cubic-bezier(.2,.7,.2,1),opacity .8s}
+.footer__spot-text{position:absolute;left:var(--tl,0px);top:50%;display:block;white-space:nowrap;color:var(--accent);
+  transform:translate3d(0,-50%,0);will-change:transform;transition:transform .32s cubic-bezier(.2,.7,.2,1)}
+.footer__word.is-lit .footer__spot{opacity:1}
+/* волк выглядывает из-за надписи. --cap (JS) = расстояние от верха строки до верха заглавных букв */
+.footer__stage{--wolf-w:clamp(110px,13vw,190px);--wolf-h:calc(var(--wolf-w) * .604);position:relative;
+  padding-top:calc(var(--wolf-h) - var(--cap,0px) + 8px)}
+.footer__wolf{position:absolute;z-index:0;top:8px;left:calc(64% - var(--wolf-w) / 2);width:var(--wolf-w);height:var(--wolf-h);
+  overflow:hidden;pointer-events:none;contain:strict;
+  /* плечи тают в фон прозрачной маской (без сплошного цвета, поэтому нет «прямоугольника» на любом фоне) */
+  -webkit-mask-image:linear-gradient(to bottom,#000 58%,transparent 100%);mask-image:linear-gradient(to bottom,#000 58%,transparent 100%)}
+/* тёплое свечение за головой, чтобы тёмный волк не терялся на тёмном фоне */
+.footer__wolf::before{content:"";position:absolute;inset:0;background:radial-gradient(closest-side at 50% 52%,rgba(254,85,22,.32),rgba(254,85,22,.12) 55%,transparent 100%)}
+.footer__wolf-sprite{position:absolute;inset:0;background:no-repeat 0 0;transform:translateY(104%);will-change:transform}
+.footer__wolf.is-peek .footer__wolf-sprite{transform:none;transition:transform .95s cubic-bezier(.2,1.3,.4,1)}
 @keyframes footer-ping{0%{transform:scale(1);opacity:.7}70%,100%{transform:scale(3.2);opacity:0}}
 @media (max-width:720px){
+  .footer__stage{--wolf-w:clamp(116px,34vw,170px)}
   .footer__grid{grid-template-columns:1fr 1fr}
   .footer__col--brand{grid-column:1/-1}
   .footer__word-text{-webkit-text-stroke-width:1px}
 }
-@media (prefers-reduced-motion:reduce){.footer__dot::after{animation:none}}
+.footer:not(.is-inview) .footer__dot::after{animation-play-state:paused}
+@media (prefers-reduced-motion:reduce){.footer__spot,.footer__spot-text{transition:none!important}.footer__dot::after{animation:none}.footer__wolf-sprite{transform:none!important;transition:none!important}}
