@@ -37,7 +37,7 @@
         if (returnFocus) toggle.focus();
       }
 
-      function haystack(w) { return (w.title + " " + w.desc + " " + w.stack.join(" ") + " " + w.cat).toLowerCase(); }
+      function haystack(w) { return (w.title + " " + w.desc + " " + w.stack.join(" ") + " " + (w.catLabel || w.cat)).toLowerCase(); }
 
       function find(q) {
         q = q.trim().toLowerCase();

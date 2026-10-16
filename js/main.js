@@ -6,7 +6,7 @@
     if (App[name] && App[name].init) App[name].init();
   });
   // Анимацию появления вешаем на карточки после их отрисовки
-  [".stack", ".contacts", "#gallery", "#pricing-grid"].forEach(function (sel) {
+  [".stack", ".contacts", "#pricing-grid"].forEach(function (sel) {
     var g = document.querySelector(sel);
     if (g) g.setAttribute("data-reveal-group", "");
   });

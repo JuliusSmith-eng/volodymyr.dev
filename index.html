@@ -151,11 +151,27 @@
       </div>
     </section>
 
-    <section class="section" id="works">
+    <section class="section works" id="works">
       <div class="container">
         <h2 data-i18n="works.h2">Роботи</h2>
         <div class="filters" id="filters" role="group" aria-label="Фільтр робіт" data-i18n-attr="aria-label:works.filter"></div>
-        <div class="gallery" id="gallery"></div>
+      </div>
+      <!-- Лента работ. Карточки рисует js/modules/gallery.js из js/data/works.js: здесь ничего править не нужно -->
+      <div class="slider" id="slider" role="region" aria-roledescription="carousel" aria-label="Галерея робіт" data-i18n-attr="aria-label:works.slider">
+        <div class="slider__viewport at-start" id="sliderViewport"><ul class="track" id="track"></ul></div>
+        <div class="container slider__ui" id="sliderUi">
+          <button class="slider__btn" id="sliderPrev" type="button" aria-label="Попередні роботи" data-i18n-attr="aria-label:works.prev" aria-disabled="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+          </button>
+          <button class="slider__btn" id="sliderNext" type="button" aria-label="Наступні роботи" data-i18n-attr="aria-label:works.next">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+          </button>
+          <div class="slider__bar" aria-hidden="true"><span id="sliderBar"></span></div>
+          <p class="slider__hint" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M8 8l-4 4 4 4M16 8l4 4-4 4"/></svg>
+            <span data-i18n="works.hint">Тягніть або гортайте</span>
+          </p>
+        </div>
       </div>
     </section>
 
@@ -232,12 +248,33 @@
     </span>
   </button>
 
-  <dialog class="modal" id="modal" aria-labelledby="modalTitle">
-    <button class="icon-btn modal__close" id="modalClose" type="button" aria-label="Закрити" data-i18n-attr="aria-label:modal.close">✕</button>
-    <img id="modalImg" src="" alt="">
-    <div class="modal__body">
-      <h3 id="modalTitle"></h3><p id="modalDesc"></p><ul class="tags" id="modalTags"></ul>
-      <div class="modal__nav"><button class="btn btn--ghost" id="modalPrev" type="button" data-i18n="modal.prev">Назад</button><button class="btn btn--ghost" id="modalNext" type="button" data-i18n="modal.next">Далі</button></div>
+  <dialog class="work" id="work" aria-labelledby="workTitle">
+    <div class="work__panel">
+      <button class="icon-btn work__close" id="workClose" type="button" aria-label="Закрити" data-i18n-attr="aria-label:work.close">✕</button>
+      <div class="work__media">
+        <div class="viewer" id="viewer">
+          <img class="viewer__img" id="viewerImg" src="" alt="" decoding="async">
+          <button class="viewer__nav viewer__nav--prev" id="viewerPrev" type="button" aria-label="Попереднє зображення" data-i18n-attr="aria-label:work.prevImg">‹</button>
+          <button class="viewer__nav viewer__nav--next" id="viewerNext" type="button" aria-label="Наступне зображення" data-i18n-attr="aria-label:work.nextImg">›</button>
+          <span class="viewer__count" id="viewerCount" aria-live="polite"></span>
+        </div>
+        <div class="thumbs" id="thumbs"></div>
+      </div>
+      <div class="work__info">
+        <p class="work__cat" id="workCat"></p>
+        <h3 class="work__title" id="workTitle" tabindex="-1" autofocus></h3>
+        <p class="work__desc" id="workDesc"></p>
+        <dl class="specs" id="workSpecs"></dl>
+        <ul class="tags" id="workTags"></ul>
+        <div class="work__actions">
+          <a class="btn btn--primary" id="workLink" href="#" target="_blank" rel="noopener noreferrer" data-i18n="work.link">Відкрити сайт</a>
+          <a class="btn btn--ghost" id="workOrder" href="#contacts" data-i18n="work.order">Замовити схоже</a>
+        </div>
+        <div class="work__pager" id="workPager">
+          <button type="button" id="workPrev" data-i18n="work.prevWork">← Попередня робота</button>
+          <button type="button" id="workNext" data-i18n="work.nextWork">Наступна робота →</button>
+        </div>
+      </div>
     </div>
   </dialog>
 
@@ -250,6 +287,9 @@
   <script src="js/modules/hello.js" defer></script>
   <script src="js/modules/footer.js" defer></script>
   <script src="js/modules/wolf.js" defer></script>
+  <script src="js/data/works.js" defer></script>
+  <script src="js/modules/slider.js" defer></script>
+  <script src="js/modules/work-modal.js" defer></script>
   <script src="js/modules/gallery.js" defer></script>
   <script src="js/modules/pricing.js" defer></script>
   <script src="js/modules/search.js" defer></script>
