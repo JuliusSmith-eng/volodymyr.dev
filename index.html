@@ -181,6 +181,82 @@
         <div class="filters" id="priceTabs" role="group" aria-label="Напрям" data-i18n-attr="aria-label:pricing.tabsAria"></div>
         <div class="pricing" id="pricing-grid"></div>
         <p class="note" data-i18n="pricing.note">Прискорена здача за доплату. У кожному пакеті: вихідний код, оптимізація швидкості, деплой на ваш хостинг.</p>
+        <!-- Калькулятор: опции рисует js/modules/calculator.js из js/data/calculator.js -->
+        <div class="calc" id="calc">
+          <div class="calc__head">
+            <h3 class="calc__title" data-i18n="calc.title">Збери свій лендінг</h3>
+            <p class="calc__lead" data-i18n="calc.lead">Обирайте опції ліворуч і дивіться, як сайт збирається праворуч. Ціна рахується одразу.</p>
+          </div>
+          <div class="calc__grid">
+            <div class="calc__panel">
+              <div class="game" id="game">
+                <div class="game__top">
+                  <span class="game__lvl"><span data-i18n="calc.level">Рівень</span> <b id="gameLevel">Старт</b></span>
+                  <span class="game__next" id="gameNext"></span>
+                </div>
+                <div class="game__bar" aria-hidden="true"><span id="gameFill"></span><div id="gameTicks"></div></div>
+                <div class="game__ach"><span class="game__ach-title" data-i18n="calc.ach">Досягнення</span><ul id="gameAch"></ul></div>
+              </div>
+              <div class="opts" id="opts"></div>
+              <div class="sum" id="sum">
+                <div class="sum__row">
+                  <div class="sum__total">
+                    <span class="sum__label" data-i18n="calc.total">Разом</span>
+                    <b class="sum__value" id="sumValue" aria-hidden="true">$80</b>
+                    <span class="sum__delta" id="sumDelta" aria-hidden="true"></span>
+                    <span class="sr-only" id="sumLive" role="status" aria-live="polite"></span>
+                  </div>
+                  <button class="btn btn--primary sum__order" id="calcOrder" type="button" data-i18n="calc.order">Замовити з цим набором</button>
+                </div>
+                <div class="sum__lvl" aria-hidden="true"><span id="sumLevel"></span><div class="sum__bar"><span id="sumFill"></span></div></div>
+              </div>
+            </div>
+
+            <div class="calc__preview">
+              <div class="mock" id="mock" data-theme="dark" aria-hidden="true">
+                <div class="mock__bar">
+                  <span class="mock__dots"><i></i><i></i><i></i></span>
+                  <span class="mock__url">your-site.com</span>
+                  <span class="mock__turbo" data-slot="urgent">⚡ 24–48h</span>
+                </div>
+                <div class="mock__page">
+                  <header class="mock__head">
+                    <span class="mock__logo"></span>
+                    <span class="mock__nav"><i></i><i></i><i></i></span>
+                    <span class="mock__tools">
+                      <span class="mock__lang" data-slot="lang"></span>
+                      <button class="mock__theme" data-slot="theme" type="button" tabindex="-1"><i></i></button>
+                      <span class="mock__cta"></span>
+                    </span>
+                  </header>
+                  <section class="mock__hero">
+                    <div class="mock__copy"><b></b><b></b><i></i><i></i><span class="mock__btn"></span></div>
+                    <div class="mock__img"></div>
+                  </section>
+                  <section class="mock__cards">
+                    <div class="mock__card"><span></span><i></i><i></i></div>
+                    <div class="mock__card"><span></span><i></i><i></i></div>
+                    <div class="mock__card"><span></span><i></i><i></i></div>
+                  </section>
+                  <section class="mock__widget" data-slot="widget">
+                    <div class="mock__sliders"><div><i></i><u></u></div><div><i></i><u></u></div><div><i></i><u></u></div></div>
+                    <div class="mock__gauge"><span></span><b></b></div>
+                  </section>
+                  <div class="mock__extra" id="mockExtra" data-slot="blocks"></div>
+                  <section class="mock__form">
+                    <div class="mock__steps" data-slot="steps"><i></i><u></u><i></i><u></u><i></i></div>
+                    <div class="mock__fields"><i></i><i></i><span class="mock__btn"></span></div>
+                    <span class="mock__sheet" data-slot="crm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M4 9h16M4 14h16M10 9v12"/></svg></span>
+                  </section>
+                  <div class="mock__chips" id="mockChips"></div>
+                  <footer class="mock__foot"><i></i><i></i><i></i></footer>
+                  <span class="mock__tg" data-slot="telegram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 4.5L2.8 11.7l5.6 2 2 5.6 3.2-4.4 4.4 3.3z"/><path d="M8.4 13.7l13.1-9.2"/></svg><em>1</em></span>
+                </div>
+              </div>
+              <p class="calc__hint" data-i18n="calc.hint">Макет збирається з ваших опцій: пробуйте вмикати та вимикати.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -267,7 +343,8 @@
         <dl class="specs" id="workSpecs"></dl>
         <ul class="tags" id="workTags"></ul>
         <div class="work__actions">
-          <a class="btn btn--primary" id="workLink" href="#" target="_blank" rel="noopener noreferrer" data-i18n="work.link">Відкрити сайт</a>
+          <a class="btn btn--primary" id="workLink" href="#" target="_blank" rel="noopener noreferrer"><span id="workLinkText">Переглянути роботу</span>
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
           <a class="btn btn--ghost" id="workOrder" href="#contacts" data-i18n="work.order">Замовити схоже</a>
         </div>
         <div class="work__pager" id="workPager">
@@ -292,6 +369,9 @@
   <script src="js/modules/work-modal.js" defer></script>
   <script src="js/modules/gallery.js" defer></script>
   <script src="js/modules/pricing.js" defer></script>
+  <script src="js/data/calculator.js" defer></script>
+  <script src="js/modules/fx.js" defer></script>
+  <script src="js/modules/calculator.js" defer></script>
   <script src="js/modules/search.js" defer></script>
   <script src="js/main.js" defer></script>
 </body>

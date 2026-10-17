@@ -34,3 +34,6 @@ html.js [data-reveal].is-hiding{transition-delay:0s}
 /* Паралакс: окрема властивість translate, щоб не конфліктувати з transform-появою */
 html.js [data-parallax]{translate:0 var(--px,0px);will-change:translate}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}html.js [data-reveal]{opacity:1;transform:none;filter:none}html.js [data-parallax]{translate:none!important}}
+/* Анимации появления уводят блоки за край экрана; без обрезки раскладка на телефоне становится шире экрана
+   (страницу можно сдвинуть вбок). clip, в отличие от hidden, не создаёт контейнер прокрутки, поэтому sticky работает. */
+@supports (overflow: clip){html,body{overflow-x:clip}}

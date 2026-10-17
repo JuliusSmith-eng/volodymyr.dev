@@ -82,7 +82,7 @@
       "work.nextImg": "Наступне зображення",
       "work.thumb": "Зображення {n}",
       "work.imgAlt": "{title}: {n} з {total}",
-      "work.link": "Відкрити сайт",
+      "work.link": "Переглянути роботу",
       "work.order": "Замовити схоже",
       "work.prevWork": "← Попередня робота",
       "work.nextWork": "Наступна робота →",
@@ -98,21 +98,42 @@
       "pricing.days": "{n} дні",
       "pricing.order": "Замовити",
       "pricing.note": "Прискорена здача за доплату. У кожному пакеті: вихідний код, оптимізація швидкості, деплой на ваш хостинг.",
+      "calc.title": "Збери свій лендінг",
+      "calc.lead": "Обирайте опції ліворуч і дивіться, як сайт збирається праворуч. Ціна рахується одразу.",
+      "calc.included": "Входить у вартість",
+      "calc.total": "Разом",
+      "calc.order": "Замовити з цим набором",
+      "calc.mockAria": "Схематичний макет вашого сайту",
+      "calc.hint": "Макет збирається з ваших опцій: пробуйте вмикати та вимикати.",
+      "calc.level": "Рівень",
+      "calc.levels": ["Старт", "Про", "Майстер", "Ультимейт"],
+      "calc.next": "ще {n} до «{name}»",
+      "calc.max": "Максимальний рівень",
+      "calc.ach": "Досягнення",
+      "calc.achLocked": "Ще не відкрито",
+      "calc.ach.speed": "Швидкий старт",
+      "calc.ach.polyglot": "Поліглот",
+      "calc.ach.auto": "Автоматизація",
+      "calc.ach.play": "Інтерактив",
+      "calc.ach.style": "Стиліст",
+      "calc.ach.full": "Повний набір",
+      "calc.less": "Менше",
+      "calc.more": "Більше",
+      "calc.toast.level": "Новий рівень: {name}!",
+      "calc.toast.ach": "Досягнення: {name}",
+      "calc.toast.copied": "Замовлення скопійовано. Вставте його в чат",
+      "calc.toast.copyFail": "Скопіюйте замовлення вручну з поля",
+      "calc.orderHead": "Привіт! Хочу замовити лендінг із такими опціями:",
+      "calc.orderTotal": "Разом: {total}",
       "pricing.items": {
         landing: [
-          ["1 сторінка, до 3–4 секцій", "HTML, CSS, vanilla JS", "2 правки"],
-          ["До 5 секцій", "Інтерактив і робоча форма", "3 правки"],
-          ["До 8 секцій", "Складні анімації, власний JS", "5 правок"]
+          ["1 сторінка, до 3–4 секцій", "HTML, CSS, vanilla JS", "2 правки", "Оптимізація швидкості (чистий JS, стиснення, lazy-load)", "Кастомні мікроанімації (GSAP, ScrollTrigger, CSS hover/reveal)"]
         ],
         clone: [
-          ["Односторінкова копія за референсом", "Адаптив під усі екрани", "2 правки"],
-          ["Багатосекційний лендінг", "Інтерактивні елементи та CSS-анімації", "3 правки"],
-          ["Багатосторінковий сайт", "JS-функціональність, форми", "5 правок"]
+          ["Односторінкова копія за референсом", "Адаптив під усі екрани", "2 правки", "Оптимізація швидкості (чистий JS, стиснення, lazy-load)", "Кастомні мікроанімації (GSAP, ScrollTrigger, CSS hover/reveal)"]
         ],
         dashboard: [
-          ["Сторінка з графіками Chart.js", "Динамічні фільтри", "2 правки"],
-          ["Дашборд + 1 реальний API", "GA4, Stripe, CRM або Webhook", "3 правки"],
-          ["Кілька джерел API", "Авторизація, експорт в 1 клік", "5 правок"]
+          ["Сторінка з графіками Chart.js", "Динамічні фільтри", "2 правки", "Оптимізація швидкості (чистий JS, стиснення, lazy-load)", "Кастомні мікроанімації (GSAP, ScrollTrigger, CSS hover/reveal)"]
         ]
       },
 
@@ -209,7 +230,7 @@
       "work.nextImg": "Next image",
       "work.thumb": "Image {n}",
       "work.imgAlt": "{title}: {n} of {total}",
-      "work.link": "Open site",
+      "work.link": "View project",
       "work.order": "Order something similar",
       "work.prevWork": "← Previous project",
       "work.nextWork": "Next project →",
@@ -225,21 +246,42 @@
       "pricing.days": "{n} days",
       "pricing.order": "Order",
       "pricing.note": "Rush delivery available for an extra fee. Every package includes source code, speed optimization and deployment to your hosting.",
+      "calc.title": "Build your landing page",
+      "calc.lead": "Pick options on the left and watch the site assemble on the right. The price updates instantly.",
+      "calc.included": "Included",
+      "calc.total": "Total",
+      "calc.order": "Order this setup",
+      "calc.mockAria": "Schematic mockup of your site",
+      "calc.hint": "The mockup is built from your options: try switching them on and off.",
+      "calc.level": "Level",
+      "calc.levels": ["Starter", "Pro", "Master", "Ultimate"],
+      "calc.next": "{n} more to “{name}”",
+      "calc.max": "Max level",
+      "calc.ach": "Achievements",
+      "calc.achLocked": "Not unlocked yet",
+      "calc.ach.speed": "Quick start",
+      "calc.ach.polyglot": "Polyglot",
+      "calc.ach.auto": "Automation",
+      "calc.ach.play": "Interactive",
+      "calc.ach.style": "Stylist",
+      "calc.ach.full": "Full house",
+      "calc.less": "Less",
+      "calc.more": "More",
+      "calc.toast.level": "New level: {name}!",
+      "calc.toast.ach": "Achievement: {name}",
+      "calc.toast.copied": "Order copied. Paste it into the chat",
+      "calc.toast.copyFail": "Please copy the order manually",
+      "calc.orderHead": "Hi! I would like to order a landing page with these options:",
+      "calc.orderTotal": "Total: {total}",
       "pricing.items": {
         landing: [
-          ["1 page, up to 3–4 sections", "HTML, CSS, vanilla JS", "2 revisions"],
-          ["Up to 5 sections", "Interactivity and a working form", "3 revisions"],
-          ["Up to 8 sections", "Complex animations, custom JS", "5 revisions"]
+          ["1 page, up to 3–4 sections", "HTML, CSS, vanilla JS", "2 revisions", "Speed optimization (clean JS, compression, lazy-load)", "Custom micro-animations (GSAP, ScrollTrigger, CSS hover/reveal)"]
         ],
         clone: [
-          ["One-page copy from a reference", "Responsive for all screens", "2 revisions"],
-          ["Multi-section landing page", "Interactive elements and CSS animations", "3 revisions"],
-          ["Multi-page website", "JS functionality, forms", "5 revisions"]
+          ["One-page copy from a reference", "Responsive for all screens", "2 revisions", "Speed optimization (clean JS, compression, lazy-load)", "Custom micro-animations (GSAP, ScrollTrigger, CSS hover/reveal)"]
         ],
         dashboard: [
-          ["Page with Chart.js charts", "Dynamic filters", "2 revisions"],
-          ["Dashboard + 1 real API", "GA4, Stripe, CRM or webhook", "3 revisions"],
-          ["Multiple API sources", "Authentication, one-click export", "5 revisions"]
+          ["Page with Chart.js charts", "Dynamic filters", "2 revisions", "Speed optimization (clean JS, compression, lazy-load)", "Custom micro-animations (GSAP, ScrollTrigger, CSS hover/reveal)"]
         ]
       },
 
@@ -336,7 +378,7 @@
       "work.nextImg": "Nächstes Bild",
       "work.thumb": "Bild {n}",
       "work.imgAlt": "{title}: {n} von {total}",
-      "work.link": "Website öffnen",
+      "work.link": "Projekt ansehen",
       "work.order": "Ähnliches bestellen",
       "work.prevWork": "← Vorheriges Projekt",
       "work.nextWork": "Nächstes Projekt →",
@@ -352,21 +394,42 @@
       "pricing.days": "{n} Tage",
       "pricing.order": "Bestellen",
       "pricing.note": "Beschleunigte Lieferung gegen Aufpreis. In jedem Paket enthalten: Quellcode, Geschwindigkeitsoptimierung, Deployment auf Ihrem Hosting.",
+      "calc.title": "Baue deine Landingpage",
+      "calc.lead": "Wähle links Optionen und sieh rechts, wie die Seite entsteht. Der Preis aktualisiert sich sofort.",
+      "calc.included": "Inklusive",
+      "calc.total": "Gesamt",
+      "calc.order": "Mit diesem Paket bestellen",
+      "calc.mockAria": "Schematischer Entwurf deiner Website",
+      "calc.hint": "Der Entwurf entsteht aus deinen Optionen: schalte sie ein und aus.",
+      "calc.level": "Level",
+      "calc.levels": ["Starter", "Pro", "Meister", "Ultimate"],
+      "calc.next": "noch {n} bis „{name}“",
+      "calc.max": "Höchstes Level",
+      "calc.ach": "Erfolge",
+      "calc.achLocked": "Noch nicht freigeschaltet",
+      "calc.ach.speed": "Schnellstart",
+      "calc.ach.polyglot": "Polyglott",
+      "calc.ach.auto": "Automatisierung",
+      "calc.ach.play": "Interaktiv",
+      "calc.ach.style": "Stylist",
+      "calc.ach.full": "Volles Paket",
+      "calc.less": "Weniger",
+      "calc.more": "Mehr",
+      "calc.toast.level": "Neues Level: {name}!",
+      "calc.toast.ach": "Erfolg: {name}",
+      "calc.toast.copied": "Bestellung kopiert. Füge sie in den Chat ein",
+      "calc.toast.copyFail": "Bitte kopiere die Bestellung manuell",
+      "calc.orderHead": "Hallo! Ich möchte eine Landingpage mit diesen Optionen bestellen:",
+      "calc.orderTotal": "Gesamt: {total}",
       "pricing.items": {
         landing: [
-          ["1 Seite, bis zu 3–4 Abschnitte", "HTML, CSS, Vanilla JS", "2 Korrekturen"],
-          ["Bis zu 5 Abschnitte", "Interaktivität und funktionierendes Formular", "3 Korrekturen"],
-          ["Bis zu 8 Abschnitte", "Aufwendige Animationen, eigenes JS", "5 Korrekturen"]
+          ["1 Seite, bis zu 3–4 Abschnitte", "HTML, CSS, Vanilla JS", "2 Korrekturen", "Geschwindigkeitsoptimierung (reines JS, Komprimierung, Lazy-Load)", "Individuelle Mikro-Animationen (GSAP, ScrollTrigger, CSS-Hover/Reveal)"]
         ],
         clone: [
-          ["Einseitiger Nachbau nach Vorlage", "Responsive für alle Bildschirmgrößen", "2 Korrekturen"],
-          ["Landingpage mit mehreren Abschnitten", "Interaktive Elemente und CSS-Animationen", "3 Korrekturen"],
-          ["Mehrseitige Website", "JS-Funktionalität, Formulare", "5 Korrekturen"]
+          ["Einseitiger Nachbau nach Vorlage", "Responsive für alle Bildschirmgrößen", "2 Korrekturen", "Geschwindigkeitsoptimierung (reines JS, Komprimierung, Lazy-Load)", "Individuelle Mikro-Animationen (GSAP, ScrollTrigger, CSS-Hover/Reveal)"]
         ],
         dashboard: [
-          ["Seite mit Chart.js-Diagrammen", "Dynamische Filter", "2 Korrekturen"],
-          ["Dashboard + 1 echte API", "GA4, Stripe, CRM oder Webhook", "3 Korrekturen"],
-          ["Mehrere API-Quellen", "Authentifizierung, Export mit einem Klick", "5 Korrekturen"]
+          ["Seite mit Chart.js-Diagrammen", "Dynamische Filter", "2 Korrekturen", "Geschwindigkeitsoptimierung (reines JS, Komprimierung, Lazy-Load)", "Individuelle Mikro-Animationen (GSAP, ScrollTrigger, CSS-Hover/Reveal)"]
         ]
       },
 

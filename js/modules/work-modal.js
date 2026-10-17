@@ -2,7 +2,7 @@
    Построено на нативном <dialog>: фокус-ловушку, Esc и инертность фона даёт браузер.
    Данные приходят готовыми (уже на нужном языке), модуль ничего не знает о списке работ.
 
-   const data = { id, title, desc, cat, stack: [], specs: [[label, value]], images: [url], link }
+   const data = { id, title, desc, cat, stack: [], specs: [[label, value]], images: [url], link, linkText }
    App.workModal.open(data, { onNav(dir) })   // onNav: перейти к соседней работе (или не передавать)
    App.workModal.update(data)                 // подставить новый текст (смена языка)  */
 (function () {
@@ -15,7 +15,8 @@
   const warmed = new Set();
 
   const esc = s => { const d = document.createElement("div"); d.textContent = s == null ? "" : String(s); return d.innerHTML; };
-  const safeUrl = u => (/^(https?:\/\/|\/|\.\/|#)/i.test(u || "") ? u : "");
+  // ссылка может быть полной (https://...) или относительной (demos/site/index.html); опасные схемы отбрасываем
+  const safeUrl = u => { u = String(u || "").trim(); return /^(javascript|data|vbscript):/i.test(u) ? "" : u; };
 
   function warm(src) { // подгружаем соседние картинки заранее, чтобы листалось без пауз
     if (!src || warmed.has(src)) return;
@@ -59,8 +60,9 @@
     el.tags.innerHTML = (d.stack || []).map(s => `<li>${esc(s)}</li>`).join("");
     el.tags.hidden = !(d.stack && d.stack.length);
     const link = safeUrl(d.link);
-    el.link.hidden = !link;
-    if (link) el.link.href = link;
+    el.link.hidden = !link; // нет ссылки: кнопки нет (мёртвую кнопку не показываем)
+    if (link) el.link.href = link; else el.link.removeAttribute("href");
+    el.linkText.textContent = d.linkText || t("work.link");
     el.thumbs.innerHTML = multi ? d.images.map((src, i) => `<button type="button" data-i="${i}" aria-label="${esc(t("work.thumb", { n: i + 1 }))}"><img src="${esc(src)}" alt="" loading="lazy" decoding="async" draggable="false"></button>`).join("") : "";
     el.thumbs.hidden = !multi;
     el.prev.hidden = el.next.hidden = el.count.hidden = !multi;
@@ -101,7 +103,7 @@
       panel: dlg.querySelector(".work__panel"), viewer: $("viewer"), img: $("viewerImg"), count: $("viewerCount"),
       prev: $("viewerPrev"), next: $("viewerNext"), thumbs: $("thumbs"),
       cat: $("workCat"), title: $("workTitle"), desc: $("workDesc"), specs: $("workSpecs"), tags: $("workTags"),
-      link: $("workLink"), order: $("workOrder"), pager: $("workPager"), prevWork: $("workPrev"), nextWork: $("workNext")
+      link: $("workLink"), linkText: $("workLinkText"), order: $("workOrder"), pager: $("workPager"), prevWork: $("workPrev"), nextWork: $("workNext")
     };
 
     $("workClose").addEventListener("click", close);

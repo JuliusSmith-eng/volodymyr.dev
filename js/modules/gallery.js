@@ -52,6 +52,7 @@
     if (!imgs.length) warn(`«${id}»: нет картинок (поле images)`);
     if (!P.categories[raw.cat]) warn(`«${id}»: категории «${raw.cat}» нет в categories`);
     if (!(raw.uk && raw.uk.title)) warn(`«${id}»: не заполнен uk.title`);
+    if (raw.link && /^\s*(javascript|data|vbscript):/i.test(raw.link)) warn(`«${id}»: ссылка link не будет работать (запрещённая схема)`);
     return { id, cat: raw.cat, images: imgs, cover, stack: raw.stack || [], link: raw.link, raw };
   }
 
@@ -62,7 +63,7 @@
     const extra = (r[App.i18n.lang] && r[App.i18n.lang].specs) || (r.en && r.en.specs) || (r.uk && r.uk.specs) || [];
     return {
       id: w.id, cat: w.cat, catLabel: catLabel(w.cat),
-      title: pick(r, "title") || w.id, desc: pick(r, "desc"),
+      title: pick(r, "title") || w.id, desc: pick(r, "desc"), linkText: pick(r, "linkText"),
       stack: w.stack, specs: specs.concat(extra), images: w.images, cover: w.cover, link: w.link
     };
   }

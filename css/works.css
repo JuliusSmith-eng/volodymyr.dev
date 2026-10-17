@@ -94,6 +94,8 @@ html.is-locked{overflow:hidden}
 .specs dt{color:var(--muted);font:500 .95rem var(--font-label);letter-spacing:.06em}
 .specs dd{margin:0;text-align:right;font-weight:600}
 .work__actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:auto;padding-top:8px}
+.work__actions .btn svg{margin-left:8px;transition:transform .3s var(--ease)}
+.work__actions .btn:hover svg{transform:translate(3px,-3px)}
 .work__pager{display:flex;justify-content:space-between;gap:12px;margin-top:20px;padding-top:14px;border-top:1px solid var(--border)}
 .work__pager button{padding:6px 0;border:0;background:none;color:var(--muted);font:500 .95rem var(--font-label);letter-spacing:.05em;white-space:nowrap;cursor:pointer;transition:color .2s}
 .work__pager button:hover{color:var(--accent-text)}

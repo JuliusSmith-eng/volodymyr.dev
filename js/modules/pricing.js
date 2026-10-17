@@ -1,10 +1,11 @@
 (function () {
   var App = (window.App = window.App || {});
-  // Цены, сроки и пометка «hot» тут, тексты пакетов и подписи в js/modules/i18n.js (pricing.*)
+  // Цена и срок тарифа Basic тут, тексты пакета и подписи в js/modules/i18n.js (pricing.*).
+  // Всё остальное (доп. опции) собирается в калькуляторе: js/data/calculator.js
   var PLANS = {
-    landing: [{ name: "Basic", price: 80, days: 2 }, { name: "Standard", price: 120, days: 3, hot: true }, { name: "Premium", price: 180, days: 4 }],
-    clone: [{ name: "Basic", price: 80, days: 2 }, { name: "Standard", price: 120, days: 3, hot: true }, { name: "Premium", price: 180, days: 4 }],
-    dashboard: [{ name: "Basic", price: 80, days: 2 }, { name: "Standard", price: 120, days: 3, hot: true }, { name: "Premium", price: 180, days: 4 }]
+    landing: [{ name: "Basic", price: 80, days: 2 }],
+    clone: [{ name: "Basic", price: 80, days: 2 }],
+    dashboard: [{ name: "Basic", price: 80, days: 2 }]
   };
 
   App.pricing = {

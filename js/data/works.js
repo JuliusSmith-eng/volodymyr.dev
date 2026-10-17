@@ -16,7 +16,7 @@
        images: 3,                     // сколько картинок лежит в папке (1.webp ... 3.webp)
        ext: "webp",                   // необязательно: формат картинок, по умолчанию imageExt (ниже)
        stack: ["HTML", "CSS", "JS"],  // технологии (показываются тегами)
-       link: "https://example.com",   // необязательно: ссылка на живой сайт, кнопка «Открыть сайт»
+       link: "https://example.com",   // ссылка на живой сайт: появляется кнопка «Переглянути роботу ↗»
        uk: { title: "Назва", desc: "Опис у 1–3 реченнях.", type: "Лендінг", term: "5 днів", result: "+30% заявок" },
        en: { title: "Title", desc: "Short description.",   type: "Landing page", term: "5 days", result: "+30% leads" },
        de: { title: "Titel", desc: "Kurze Beschreibung.",  type: "Landingpage",  term: "5 Tage", result: "+30% Anfragen" }
@@ -25,6 +25,11 @@
    ЗАМЕТКИ
    • Обязательны только id, cat, images и title в uk. Остальное можно не писать: пустые поля
      просто не показываются. Если нет перевода (en или de), берётся другой язык.
+   • ССЫЛКА НА РАБОТУ: поле link. Пока оно пустое ("") кнопки «Переглянути роботу» нет, как только
+     вписали адрес, кнопка появляется сама и открывает сайт в новой вкладке. Ссылка может быть
+     полной (https://site.com) или относительной (demos/course/index.html, если демо лежит рядом).
+     Свой текст кнопки (например «Відкрити демо» для дашборда): linkText внутри языкового блока.
+     Без linkText кнопка называется «Переглянути роботу / View project / Projekt ansehen».
    • type / term / result попадают в строки «Тип / Термін / Результат» в окне работы.
      Нужна своя строка? Добавьте  specs: [["Роль", "Дизайн + вёрстка"]]  внутрь языкового блока.
    • images можно задать списком своих имён: images: ["home.webp", "mobile.webp"]
@@ -55,6 +60,7 @@ window.PORTFOLIO = {
       cat: "landing",
       images: 3,
       stack: ["HTML", "CSS", "JS"],
+      link: "",  // ← вставьте ссылку на сайт в кавычки, например "https://my-site.com"
       uk: { title: "Лендінг онлайн-курсу", type: "Лендінг", desc: "Адаптивний лендінг для онлайн-курсу англійської: тарифи, FAQ, форма заявки." },
       en: { title: "Online course landing page", type: "Landing page", desc: "Responsive landing page for an online English course: pricing plans, FAQ, request form." },
       de: { title: "Landingpage für Online-Kurs", type: "Landingpage", desc: "Responsive Landingpage für einen Englisch-Onlinekurs: Tarife, FAQ, Anfrageformular." }
@@ -64,6 +70,7 @@ window.PORTFOLIO = {
       cat: "dashboard",
       images: 3,
       stack: ["Chart.js", "PHP", "GA4 API"],
+      link: "",
       uk: { title: "Дашборд GA4", type: "Дашборд", desc: "Дашборд живого трафіку освітнього центру, вхід по логіну, ключі API на сервері." },
       en: { title: "GA4 dashboard", type: "Dashboard", desc: "Live traffic dashboard for an education center, login-protected, API keys kept on the server." },
       de: { title: "GA4-Dashboard", type: "Dashboard", desc: "Live-Traffic-Dashboard für ein Bildungszentrum, Login-Schutz, API-Schlüssel auf dem Server." }
@@ -73,6 +80,7 @@ window.PORTFOLIO = {
       cat: "landing",
       images: 3,
       stack: ["HTML", "CSS", "Vanilla JS"],
+      link: "",
       uk: { title: "Сайт екскурсій", type: "Сайт", desc: "Сайт туристичної компанії з екскурсіями, галереєю та формою заявки в Telegram." },
       en: { title: "Excursions website", type: "Website", desc: "Website for a travel company with excursions, a gallery and a request form that posts to Telegram." },
       de: { title: "Website für Ausflüge", type: "Website", desc: "Website eines Reiseunternehmens mit Ausflügen, Galerie und Anfrageformular, das an Telegram sendet." }
@@ -82,6 +90,7 @@ window.PORTFOLIO = {
       cat: "clone",
       images: 3,
       stack: ["HTML", "CSS", "JS"],
+      link: "https://juliussmith-eng.github.io/cream/",
       uk: { title: "KORA", type: "Копія дизайну", desc: "Піксель-перфект копія дизайну за референсом, на власних текстах і зображеннях." },
       en: { title: "KORA", type: "Design clone", desc: "Pixel-perfect copy of a design from a reference, with custom copy and images." },
       de: { title: "KORA", type: "Design-Nachbau", desc: "Pixelgenauer Nachbau eines Designs nach Vorlage, mit eigenen Texten und Bildern." }
@@ -91,6 +100,7 @@ window.PORTFOLIO = {
       cat: "dashboard",
       images: 3,
       stack: ["Chart.js", "REST API"],
+      link: "",
       uk: { title: "Дашборд з API", type: "Дашборд", desc: "Графіки, фільтри за датами, експорт у PDF, Excel і JSON, світла та темна тема." },
       en: { title: "API dashboard", type: "Dashboard", desc: "Charts, date filters, export to PDF, Excel and JSON, light and dark theme." },
       de: { title: "Dashboard mit API", type: "Dashboard", desc: "Diagramme, Datumsfilter, Export als PDF, Excel und JSON, helles und dunkles Design." }
@@ -100,6 +110,7 @@ window.PORTFOLIO = {
       cat: "clone",
       images: 3,
       stack: ["HTML", "CSS", "JS"],
+      link: "",
       uk: { title: "Копія лендінгу", type: "Копія дизайну", desc: "Відтворення односторінкового сайту: адаптив, слайдери, FAQ-акордеони." },
       en: { title: "Landing page clone", type: "Design clone", desc: "Recreation of a one-page site: responsive layout, sliders, FAQ accordions." },
       de: { title: "Landingpage-Nachbau", type: "Design-Nachbau", desc: "Nachbau einer Onepage-Website: responsives Layout, Slider, FAQ-Akkordeons." }

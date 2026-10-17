@@ -2,7 +2,7 @@
   var App = window.App || {};
   document.documentElement.classList.add("js");
   document.getElementById("year").textContent = new Date().getFullYear();
-  ["i18n", "theme", "themeToggle", "nav", "gallery", "pricing", "search", "counters", "hello", "wolf", "footer"].forEach(function (name) {
+  ["i18n", "theme", "themeToggle", "nav", "gallery", "pricing", "calculator", "search", "counters", "hello", "wolf", "footer"].forEach(function (name) {
     if (App[name] && App[name].init) App[name].init();
   });
   // Анимацию появления вешаем на карточки после их отрисовки
